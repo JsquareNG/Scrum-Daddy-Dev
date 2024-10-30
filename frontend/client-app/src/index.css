@@ -1,0 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Menu Styles */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 94vh;
+}
+
+.logo {
+  text-align: center;
+  padding: 10px;
+  color: #27374d;
+  align-items: center;
+  display: flex;
+  gap: 20px;
+}
+
+.logo .icon {
+  font-size: 1.4rem;
+}
+
+.menu--list {
+  display: flex;
+  flex-direction: column;
+  transition: max-height 0.3s ease-in-out;
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.menu--list.closed {
+  width: 50px; /* Hide the menu when closed */
+  display: flex; /* Show when the hamburger menu is open */
+  flex-direction: column;
+  gap: 10px;
+  transition: max-height 0.3s ease-in-out;
+}
+
+.menu--list.closed .item{
+  font-size: 0.5rem;
+}
+
+.hamburger-icon {
+  display: block; /* Ensure hamburger icon is always visible */
+  cursor: pointer;
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.menu--list .item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 5px;
+  padding-right: 15px;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  color: #27374d;
+}
+
+.menu--list .item:hover {
+  background: #27374d;
+  color: #dde6ed;
+}
+
+/* Hamburger Menu Styling */
+.menu--list.open {
+  display: flex; /* Show when the hamburger menu is open */
+  flex-direction: column;
+  gap: 20px;
+  transition: max-height 0.3s ease-in-out; /* Smooth open/close */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .card-container {
+    @apply flex-col; /* Stack cards on smaller screens */
+  }
+
+  .cancelled, .withdrawn, .reviewed, .autorejected {
+    @apply w-full; /* Full width on smaller screens */
+  }
+
+  .calendar {
+    margin-left: 20px; /* Reduce left margin for smaller screens */
+  }
+
+  .menu {
+    height: auto; /* Adjust the height for smaller screens */
+  }
+
+  .menu--list {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden; /* Smooth collapsing */
+  }
+
+  .menu--list .item {
+    margin: 0px 0; /* Adjust margin for vertical stacking */
+    width: 100%; /* Full width for better visibility */
+    text-align: left; /* Align text to the left */
+  }
+
+  .logo h2 {
+    font-size: 20px; /* Adjust logo size for smaller screens */
+  }
+
+}
+
+@media (max-width: 480px) {
+  .hamburger-icon {
+    display: block; /* Show the hamburger icon */
+  }
+
+  .menu {
+    position: fixed; /* Fix the navbar position */
+    top: 0; /* Position it at the top */
+    left: 0; /* Align it to the left */
+    height: 100%; /* Full height */
+    z-index: 1000; /* Ensure it overlaps other content */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for showing/hiding */
+  }
+
+  .menu--list {
+    display: flex; /* Ensure the menu is displayed as flex */
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+    max-height: 0; /* Start with height 0 for smooth animation */
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth collapsing */
+    overflow: hidden; /* Hide overflow */
+    opacity: 0; /* Hidden by default */
+    background-color: #dde6ed; /* Background color for visibility */
+  }
+
+  /* When the menu is open, set max-height and opacity */
+  .menu--list.open {
+    max-height: 500px; /* Set a max-height when open; adjust as needed */
+    overflow: auto; /* Allow scrolling if content exceeds max-height */
+    opacity: 1; /* Make the menu visible */
+  }
+
+  /* Ensure that items take full width on mobile */
+  .menu--list .item {
+    width: 100%; /* Full width for better visibility */
+    text-align: left; /* Align text to the left */
+    padding: 10px 15px; /* Add some padding for better touch targets */
+  }
+
+  /* Style for icons in the items */
+  .menu--list .icon {
+    margin-right: 10px; /* Add spacing between the icon and text */
+  }
+
+}
+
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #dde6ed;
+  padding: 20px;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.calendar {
+  width: 100%;
+  max-width: 800px; /* Adjust this value as needed */
+  margin-left: 120px; /* Center the calendar */
+  margin-right: auto;
+}
+
+.rbc-calendar {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.rbc-header {
+  color: white;
+  font-size: "14px";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #17405d;
+}
+
+.rbc-allday-cell {
+  display: none;
+}
+
+.rbc-time-header-cell .rbc-today {
+  background-color: darkcyan !important;
+}
+
+.rbc-time-slot:not(.rbc-today .rbc-time-slot) {
+  background-color: #eff4f7;
+}
+
+.rbc-off-range {
+  background-color: #e5e7eb; /* Light grey for weekends */
+  pointer-events: none; /* Prevent interaction */
+}
+
+/* Login.css */
+.login-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.login-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background-color:#e0f2fe; /* Match the background color */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  padding: 60px;
+  background-color: white; /* White background for the login form */
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-image {
+  max-width: 100%;
+  height: auto
+}
+
+
+.divider {
+  text-align: center;
+  margin: 10px 0;
+  color: #aaa;
+}
+
+
+.tabs-container {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around; /* Align tabs evenly */
+  border-radius: 25px; /* Rounded edges for the container */
+  overflow: hidden; /* Ensure rounded corners are visible */
+  background-color: #f0f0f0; /* Background color for the tab bar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+}
+
+.tab {
+  flex: 1; /* Ensure each tab takes equal space */
+  padding: 10px 0; /* Vertical padding */
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600; /* Bolder font for better visibility */
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.tab:hover {
+  background: #e0e0e0; /* Background color on hover */
+}
+
+.tab.active {
+  background: navy; /* Active tab background color */
+  color: white; /* Text color for active tab */
+}
+
+.tab-content {
+  margin-top: 10px;
+  background: white; /* White background for content */
+}
+
+/* Add any additional custom styles below as needed */
+.text {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.separation-container {
+  @apply mb-8 rounded-t-2xl bg-gradient-to-r from-[#a3c1e0] to-[#6fb3e5] p-10; /* Gradient background */
+}
+
+.team-container {
+  @apply mb-8 rounded-t-2xl pb-10 pl-10 pr-10
+}
+
+.audit-container {
+  @apply rounded-t-2xl bg-gradient-to-r from-[#a3c1e0] to-[#6fb3e5] p-10;
+}
+
+.notifications-container {
+  @apply mb-8 rounded-t-2xl bg-gradient-to-r from-[#a3c1e0] to-[#6fb3e5] p-10 pb-1; /* Gradient background */
+}
+
+.card-container {
+  @apply flex flex-wrap justify-between gap-4; /* Card layout */
+}
+

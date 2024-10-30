@@ -1,0 +1,149 @@
+.App {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.dashboard {
+  display: flex; /* Use flexbox to position the navbar and content */
+  gap: 20px; /* Space between navbar and content */
+}
+
+.dashboard--content {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%; /* Fixed width */
+  /* margin-left: 70px; */
+  overflow: auto;
+  display: flex;
+  flex-direction: column; /* Use column layout */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for visual separation */
+}
+
+.app-navbar {
+  position: fixed; 
+  top: 0;          /* Sticks it to the top of the viewport */
+  z-index: 1000;   /* Ensures it stays on top of other elements */
+  background-color: #dde6ed;
+  height: 100%;
+}
+
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .dashboard {
+    flex-direction: row; /* Keep navbar and content side by side */
+  }
+
+  .dashboard--content {
+    padding: 10px; /* Reduce padding on smaller screens */
+  }
+
+  .navbar {
+    flex: 0 0 60%; /* Adjust width of the navbar in mobile view */
+    min-width: 150px; /* Ensure minimum width */
+    
+  }
+}
+
+@media (max-width: 480px) {
+
+  .dashboard {
+    display: flex; /* Ensure display is set to flex */
+    gap: 20px; /* Space between navbar and content */
+    flex-direction: column; /* Stack items vertically */
+    width: 100%;
+  }
+
+  .dashboard--content {
+    background: #fff;
+    border-radius: 20px;
+    width: 100%; /* Full width */
+    flex: 1; /* Allow it to grow and fill the remaining space */
+    z-index: 10;
+    transition: margin-top 0.3s ease; /* Smooth transition for margin changes */
+    margin-top: 0; /* Default margin */
+    height: calc(100vh - 150px); /* Adjust height based on the navbar height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 30px;
+  }
+
+  .navbar {
+    flex: 0 0 60%; /* Adjust width of the navbar in mobile view */
+    min-width: 150px; /* Ensure minimum width */
+  }
+
+  /* Show the hamburger icon */
+  .hamburger-icon {
+    width: 24px; /* Set desired width */
+    height: 24px; /* Set desired height */
+    display: block; /* Ensure it's displayed */
+    margin: 0; /* Remove any margins */
+    padding: 10px; /* Optional: adjust padding for better click area */
+  }
+
+  /* Adjust the margin for dashboard content based on menu state */
+  .menu.open + .dashboard--content {
+    margin-top: 200px; /* Adjust this value based on your navbar height when open */
+  }
+
+  .menu.closed + .dashboard--content {
+    margin-top: 30px; /* Reset margin when closed */
+  }
+
+  .text {
+    font-size: 30px;
+  }
+
+  .tab {
+    font-size: 10px;
+    padding: 10px 4px; /* Vertical padding */
+  }
+
+  .audit-container {
+    padding: 20px;
+  }
+
+}
+
+
+
+
+
+
+
